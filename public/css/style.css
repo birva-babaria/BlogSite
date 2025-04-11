@@ -322,3 +322,12 @@ img {
   justify-content: space-between;
   padding: 10px 0;
 }
+
+.pagination{
+  text-decoration: none;
+  color: var(--gray);
+}
+
+.pagination:hover{
+  color: #484646;
+}

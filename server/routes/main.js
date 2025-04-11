@@ -10,9 +10,18 @@ router.get('/', async (req, res) => {
             title: 'BlogSite',
             description: 'Blog-Site made by Birva!'
         }
-        const data = await Post.find().sort({UpdatedAt: -1});
-        console.log(data);
-        res.render('index', { locals, data });
+
+        let perPage = 2;
+        let page = req.query.page || 1;
+
+        const data = await Post.aggregate([ { $sort: {updatedAt: -1} }])
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec();
+        const count = await Post.countDocuments();
+        const nextPage = parseInt(page) + 1;
+        const hasNextPage = nextPage <= Math.ceil(count / perPage)
+        res.render('index', { locals, data , currPage: page, nextPage: hasNextPage ? nextPage : null});
     
     } catch(error) {
         console.log(error);
