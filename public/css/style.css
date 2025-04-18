@@ -263,31 +263,51 @@ img {
 
 /* Searchbar */
 .searchbar {
-  /* visibility: hidden;
-  transform: translateY(-100px); */
-  background-color: var(--black);
+  visibility: hidden;
+  transform: translateY(-100px);
+  background-color: beige;
   padding: 4px 0;
   position: absolute;
   left: 0;
   right: 0;
+  transition: transform 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
 }
 
 .searchbar.open {
   transform: translateY(0);
   transition: transform 0.1s;
+  padding: 10px 10px;
 }
 
 .searchbar input {
   margin: 0;
   border: 0;
+  padding: 10px;
+  background: white;
+  color: black;
+  font-size: 16px;
 }
 
 #searchclose {
   position: absolute;
   top: 0;
-  right: 0;
-  color: var(--gray-light);
-  padding: 15px;
+  right: 0%;
+  display: flex;
+  padding: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchclose svg,
+#searchclose img {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
 }
 
 /* Dashboard Admin */
